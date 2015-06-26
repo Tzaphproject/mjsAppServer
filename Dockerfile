@@ -15,7 +15,7 @@ MAINTAINER Sébastien Leroy <Leroy.milamber@gmail.com>
 # 
 # NB: running all commands in one line to avoid spanwning multiple containers
 # 
-RUN apt-get update && apt-get install -y curl && \
+RUN apt-get update && apt-get install -y curl build-essential python && \
   curl --silent --location https://deb.nodesource.com/setup_0.12 | sudo bash - && \
   apt-get install -y nodejs=0.12.5-1nodesource1~trusty1 && \
   echo "nodejs hold" | dpkg --set-selections
@@ -27,8 +27,9 @@ VOLUME /data/app
 
 # Some configuration parameters
 # 
-ENV APPNAME=app
-ENV PORT=3000 MONGO_URL=mongodb://localhost:27017/${APPNAME}
+ENV APPNAME=app 
+ENV DB_CONTAINER_NAME=mjsMongo DB DB_AUTH=admin:admin
+ENV PORT=3000 MONGO_URL=mongodb://${DB_AUTH}@${DB_CONTAINER_NAME}:27017/${APPNAME}
 
 
 # some init & config scripts
