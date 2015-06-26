@@ -1,4 +1,3 @@
-
 [![MIT](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)](http://opensource.org/licenses/MIT) 
 [![Status](https://img.shields.io/badge/maturity-under_dev-red.svg?style=plastic)]() 
 [![Docker Stars](https://img.shields.io/docker/stars/tzaphkiel/mjsappserver.svg?style=plastic)](https://hub.docker.com/u/tzaphkiel/mjsappserver/) 
@@ -89,3 +88,4 @@ Some useful aliases to manipulate docker:
 __Warning__: if ran, the usual command starting the mongoDB (mongo.sh) will not be called.
 
     # docker run -t -i tzaphkiel/mjsappserver /bin/bash
+
