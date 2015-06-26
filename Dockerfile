@@ -27,9 +27,7 @@ VOLUME /data/app
 
 # Some configuration parameters
 # 
-ENV APPNAME=app 
-ENV DB_CONTAINER_NAME=mjsMongo DB_AUTH=admin:admin
-ENV PORT=3000 MONGO_URL=mongodb://${DB_AUTH}@${DB_CONTAINER_NAME}:27017/${APPNAME}
+ENV APPNAME=app DB_CONTAINER_NAME=mjsMongo DB_AUTH=admin:admin PORT=3000
 
 
 # some init & config scripts
