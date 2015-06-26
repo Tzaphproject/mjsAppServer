@@ -37,7 +37,7 @@ ADD init.sh /init.sh
 
 # expose the port host:container
 # 
-EXPOSE 9080 3000
+EXPOSE 3000
 
 
 # Start the dtabase
