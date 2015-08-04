@@ -14,10 +14,11 @@ MAINTAINER Sébastien Leroy <Leroy.milamber@gmail.com>
 # @see https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager#debian-and-ubuntu-based-linux-distributions
 # 
 # NB: running all commands in one line to avoid spanwning multiple containers
+# NB: do not specify full sub-version otherwise when going from 0.12.5 to 0.12.7 will not work ...
 # 
 RUN apt-get update && apt-get install -y curl build-essential python && \
   curl --silent --location https://deb.nodesource.com/setup_0.12 | sudo bash - && \
-  apt-get install -y nodejs=0.12.5-1nodesource1~trusty1 && \
+  apt-get install -y nodejs && \
   echo "nodejs hold" | dpkg --set-selections
 
 
