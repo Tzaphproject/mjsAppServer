@@ -32,10 +32,11 @@ The commands listed below will show you how to build the image, install it with 
 # Image manipulation
 ## Building
 Run the following command in the project's folder to build a new image if you have modified the scripts or Dockerfile:
+The command line options will force cleanup afterwards and a complete re-build (so if we get the 0.12.5 being updated to 0.12.7 for example, we can actually see it !).
 
 *NB: make sure you replace the username/imageName by your own if you are not a contributor.*
 
-    # docker build -t tzaphkiel/mjsappserver .
+    # docker build --no-cache=true --rm=true -t tzaphkiel/mjsappserver .
 
 ## Upload
 *This section is not available anymore as the project is built and uploaded automatically by Github with Docker hub. One can refer to the docker guides for reference if need be.*
@@ -45,12 +46,14 @@ Run the following command in the project's folder to build a new image if you ha
 
 *(i.e.: the container has to be accessed by the host system not another container)*
 
-    # docker run -d -p 8080:3000 --name mjsappserver -e AUTH="admin:admin" -v /opt/mjsappserver/:/data/app tzaphkiel/mjsappserver
+    # docker run -d -p 8080:3000 --name mjsappserver -e AUTH="admin:admin" \
+    -v /opt/mjsappserver/:/data/app tzaphkiel/mjsappserver
 
 **Using container linking:**
 *(i.e.: the container has only to be accessed by other docker containers)*
 
-    # docker run -d --name mjsappserver -e AUTH="admin:admin" -v /opt/mjsappserver/:/data/app --link mjsMongoDB:mjsMongoDB tzaphkiel/mjsappserver
+    # docker run -d --name mjsappserver -e AUTH="admin:admin" \ 
+    -v /opt/mjsappserver/:/data/app --link mjsMongoDB:mjsMongoDB tzaphkiel/mjsappserver
 
 Using this command above, the application container will see a *mjsMongoDB* /etc/hosts entry pointing to the MongoDB instance from the other container.
 
@@ -69,7 +72,7 @@ Please make sure your un-targz the archive built by *meteor deploy* and place th
 
 **Information**
 
-    # docker insect mjsappserver
+    # docker inspect mjsappserver
 
 # Miscellaneous
 ## Docker command aliases
